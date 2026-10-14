@@ -1,0 +1,9 @@
+FROM node@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402
+
+RUN npm install -g openai-oauth@2.0.0 \
+    && npm cache clean --force
+
+EXPOSE 10531
+
+ENTRYPOINT ["openai-oauth"]
+CMD ["--host", "0.0.0.0", "--port", "10531", "--no-open"]
