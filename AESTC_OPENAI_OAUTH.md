@@ -50,8 +50,9 @@ Before use, verify:
 
 - sidecar `/v1/models` returns the account-discovered model set;
 - 9Router provider model discovery returns the same models;
+- 9Router public `/v1/models` exposes the text models under `cgo/*`;
 - 9Router `/v1/responses` succeeds with `cgo/<model>`;
 - 9Router `/v1/chat/completions` succeeds with `cgo/<model>`;
 - the sidecar has no published host port.
 
-AESTC staging was verified with `cgo/gpt-5.6-sol` and a synthetic exact-response canary. Production remains a separate approval gate.
+AESTC staging was verified with `cgo/gpt-5.6-sol` and a synthetic exact-response canary. `gpt-image-2` is discovered and may appear in the public model catalog, but it is not valid for this text chat/responses route and must not be selected as a text model. Production remains a separate approval gate.
