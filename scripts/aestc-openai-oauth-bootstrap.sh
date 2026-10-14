@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+if [ -n "${ROUTER_ENV_FILE:-}" ]; then
+  set -a
+  . "$ROUTER_ENV_FILE"
+  set +a
+fi
+
 BASE_URL="${ROUTER_BASE_URL:-http://127.0.0.1:20128}"
 PASSWORD="${ROUTER_INITIAL_PASSWORD:-${INITIAL_PASSWORD:-}}"
 NODE_NAME="${OPENAI_OAUTH_NODE_NAME:-ChatGPT OAuth}"
